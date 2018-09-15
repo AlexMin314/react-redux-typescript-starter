@@ -20,9 +20,9 @@
     "<rootDir>/src/**/?(*.)(spec|test).(ts|tsx)"
   ],
   "transform": {
-    "^.+\\.(ts|tsx|js|jsx)": "ts-jest"
+    "^.+\\.(ts|tsx)": "ts-jest"
   },
-  "moduleFileExtensions": ["ts", "tsx"],
+  "moduleFileExtensions": ["ts", "tsx", "js", "jsx"],
   "transformIgnorePatterns": [
     "<rootDir>/node_modules/"
   ],
@@ -30,8 +30,8 @@
     "/node_modules/"
   ],
   "moduleNameMapper": {
-    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/jest/fileMock.ts",
-    "\\.(css|scss)$": "<rootDir>/jest/cssMock.ts"
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/fileMock.ts",
+    "\\.(css|scss)$": "<rootDir>/config/jest/cssMock.ts"
   }
 }
 
