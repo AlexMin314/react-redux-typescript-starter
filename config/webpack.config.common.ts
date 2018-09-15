@@ -9,7 +9,12 @@ const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 export = (env) => {
   const isDev = env[0] === 'development';
   const cpus = require('os').cpus().length;
-  const maxThread = cpus > 3 ? cpus - 2 : 1;
+  const maxThread = cpus > 4
+    ? cpus - 3
+    : cpus > 3
+      ? cpus - 2
+      : 1;
+  const extraThread = cpus > 4 ? 2 : 1;
   return {
     loaders: [
       {
@@ -38,14 +43,6 @@ export = (env) => {
           },
           {
             loader: 'babel-loader',
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              configFile: isDev ? 'tsconfig.dev.json' : 'tsconfig.json',
-              happyPackMode: true,
-              logLevel: 'error',
-            },
           },
         ],
       },
@@ -77,7 +74,7 @@ export = (env) => {
       new ForkTsCheckerWebpackPlugin({
         tsconfig: paths.tsConfig,
         checkSyntacticErrors: true, // for thread-loader
-        silent: true,
+        workers: extraThread,
       }),
       new webpack.ProvidePlugin({
         moment: 'moment',
