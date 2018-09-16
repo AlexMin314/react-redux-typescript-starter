@@ -8,7 +8,7 @@ export const getFilterList = (option: Option<LogLevel>) => {
   const filterFn: FilterFn = checker('whiteListed')
     ? (type) => option.whiteListed.some(str => type.includes(str))
     : checker('blackListed')
-      ? (type) => !option.blackListed.some(str => type.includes(str))
+      ? (type) => option.blackListed.some(str => type.includes(str))
       : (type) => true;
 
   return (action: Action<P, M>): boolean => {

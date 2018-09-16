@@ -4,6 +4,9 @@ describe('_Core utils - functional.ts', () => {
   test('identity should return identical value', () => {
     expect(F.identity('alex')).toBe('alex');
   });
+  test('nothing should return void', () => {
+    expect(F.nothing()).toBeUndefined();
+  });
   test('andSeq should return false if any arugment is false', () => {
     expect(F.andSeq(true, true, true)).toBe(true);
     expect(F.andSeq(true, false, false)).toBe(false);

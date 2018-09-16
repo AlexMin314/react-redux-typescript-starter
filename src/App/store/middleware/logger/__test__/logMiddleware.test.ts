@@ -30,8 +30,8 @@ describe('Logger Middleware - logMiddleware', () => {
   });
 
   afterAll(() => {
-    window.slv(LogLevel.INFO);
-    window.gl('wrongPW');
+    (window as any).slv(LogLevel.INFO);
+    (window as any).gl('wrongPW');
   });
 
   test('logMiddleware should call next function properly', () => {
@@ -39,7 +39,7 @@ describe('Logger Middleware - logMiddleware', () => {
     expect(store.dispatch).toHaveBeenCalled();
   });
   test('logMiddleware should call setTimeout properly', () => {
-    (window).gl(option.pw);
+    (window as any).gl(option.pw);
     expect(setTimeout).toHaveBeenCalledTimes(0);
     middleware(action);
     jest.runAllTimers();

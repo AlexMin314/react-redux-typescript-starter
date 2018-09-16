@@ -29,8 +29,8 @@ describe('Logger Middleware - logger', () => {
   });
 
   afterAll(() => {
-    window.slv(LogLevel.INFO);
-    window.gl('wrongPW');
+    (window as any).slv(LogLevel.INFO);
+    (window as any).gl('wrongPW');
     (window as any).console = nativeConsole;
   });
 
@@ -39,58 +39,58 @@ describe('Logger Middleware - logger', () => {
   });
 
   test('gl(get log) should work properly with unmatched pw', () => {
-    const result = window.gl('alex');
+    const result = (window as any).gl('alex');
     expect(mockedLogger.clear).not.toHaveBeenCalled();
     expect(mockedLogger.log).toHaveBeenCalled();
     expect(result).toBe(false);
   });
   test('gl(get log) should work properly with matched pw', () => {
-    const result = window.gl('test');
+    const result = (window as any).gl('test');
     expect(mockedLogger.clear).toHaveBeenCalled();
     expect(mockedLogger.log).toHaveBeenCalled();
     expect(result).toBe(true);
   });
 
   test('gle(get log enabled) should return true with matched pw', () => {
-    expect(window.gle()).toBe(true);
+    expect((window as any).gle()).toBe(true);
   });
 
   test('isAllowedLevel by initLogLevel should return true if logLevel is "info"', () => {
-    window.slv('info');
+    (window as any).slv('info');
     expect(isAllowedLevel()).toBe(true);
   });
   test('isAllowedLevel by initLogLevel should return false if logLevel is "warn"', () => {
-    window.slv('warn');
+    (window as any).slv('warn');
     expect(isAllowedLevel()).toBe(false);
   });
   test('isAllowedLevel by initLogLevel should return false if logLevel is "error"', () => {
-    window.slv('error');
+    (window as any).slv('error');
     expect(isAllowedLevel()).toBe(false);
   });
 
   test('glv(get log level) should return properly when logLevel is "info" setted by slv(set log level)', () => {
-    window.slv('info');
-    expect(window.glv() === LogLevel.INFO).toBe(true);
+    (window as any).slv('info');
+    expect((window as any).glv() === LogLevel.INFO).toBe(true);
   });
   test('glv(get log level) should return properly when logLevel is "debug" setted by slv(set log level)', () => {
-    window.slv('debug');
-    expect(window.glv() === LogLevel.DEBUG).toBe(true);
+    (window as any).slv('debug');
+    expect((window as any).glv() === LogLevel.DEBUG).toBe(true);
   });
   test('glv(get log level) should return properly when logLevel is "warn" setted by slv(set log level)', () => {
-    window.slv('warn');
-    expect(window.glv() === LogLevel.WARN).toBe(true);
+    (window as any).slv('warn');
+    expect((window as any).glv() === LogLevel.WARN).toBe(true);
   });
   test('glv(get log level) should return properly when logLevel is "error" setted by slv(set log level)', () => {
-    window.slv('error');
-    expect(window.glv() === LogLevel.ERROR).toBe(true);
+    (window as any).slv('error');
+    expect((window as any).glv() === LogLevel.ERROR).toBe(true);
   });
   test('glv(get log level) should return nothing when logLevel is not in the Enum', () => {
-    window.slv('alex');
+    (window as any).slv('alex');
     expect(mockedLogger.error).not.toHaveBeenCalled();
   });
 
   test('When the logLevel is info, some logging methods must be dispalyable ', () => {
-    window.slv('info');
+    (window as any).slv('info');
     Logger.log();
     Logger.info();
     Logger.debug();
@@ -99,7 +99,7 @@ describe('Logger Middleware - logger', () => {
     expect(mockedLogger.debug).toHaveBeenCalled();
   });
   test('When the logLevel is warn, some logging methods should not be displayed ', () => {
-    window.slv('warn');
+    (window as any).slv('warn');
     Logger.log();
     Logger.info();
     Logger.debug();
@@ -108,12 +108,12 @@ describe('Logger Middleware - logger', () => {
     expect(mockedLogger.debug).not.toHaveBeenCalled();
   });
   test('When the logLevel is error, some logging methods should not be displayed ', () => {
-    window.slv('error');
+    (window as any).slv('error');
     Logger.warn();
     expect(mockedLogger.warn).not.toHaveBeenCalled();
   });
   test('Some log method will be displayed even th logLevel is error', () => {
-    window.slv('error');
+    (window as any).slv('error');
     Logger.error();
     Logger.table();
     Logger.trace();

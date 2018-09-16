@@ -3,6 +3,8 @@
  */
 export const identity = <I>(arg: I): I => arg;
 
+export const nothing = (): void => {};
+
 /**
  * Custom Seqeunce Functions
  * - Immediately escape pipe/iteration when the condition matches.

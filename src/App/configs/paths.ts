@@ -1,7 +1,7 @@
 import { SERVER_ENVS } from '@/App/constants/envs';
 import { isProdEnv } from '@/App/utils/envs';
 
-export const _getApiBasePath = (serverEnv: string): string => {
+export const _getApiBasePath = (serverEnv: (string | undefined)): string => {
   const API_BASE_PATHS = {
     [SERVER_ENVS.LOCAL]: `http://localhost:${process.env.SERVER_PORT}/d2c-service/`,
     [SERVER_ENVS.SIT]: 'https://buy-sit.prudential.com.sg/d2c-service/',
@@ -11,7 +11,7 @@ export const _getApiBasePath = (serverEnv: string): string => {
   };
   return isProdEnv
     ? '/d2c-service/'
-    : (API_BASE_PATHS as any)[serverEnv];
+    : (API_BASE_PATHS as any)[serverEnv!];
 };
 
 export const API_BASE_PATH = _getApiBasePath(process.env.SERVER_ENV);

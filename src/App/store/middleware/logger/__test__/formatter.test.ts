@@ -84,7 +84,7 @@ describe('Logger Middleware - formatter', () => {
   });
 
   test('logOnRequest should log as expected when window methods are not declared properly.', () => {
-    window.gle = null;
+    window.gle = undefined;
     logOnRequest(mockReq);
     expect(logger.log).not.toHaveBeenCalled();
   });

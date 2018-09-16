@@ -5,7 +5,7 @@ import { Logger } from '@/App/store/middleware/logger/types';
 
 export const registerOnError = (global: Window, logger: Logger) => {
   global.onerror = (message, source, lineno, colno, error) => {
-    logFormattedError(message, error, logger);
+    logFormattedError(message, error!, logger);
     return true;
   };
 };
