@@ -1,8 +1,6 @@
 /// <reference path="./index.d.ts" />
-import { Map } from 'immutable';
-import createStore, { InitState } from '@/App/store/_storeConfig';
+import createStore from '@/App/store/_storeConfig';
 
-const initState: InitState = Map();
-const store = createStore(initState);
+const store = createStore();
 
 export default store;

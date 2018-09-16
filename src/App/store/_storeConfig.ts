@@ -39,6 +39,13 @@ export default function configureStore(initialState?: InitState): Store<Applicat
   // #4 Enhancers
   const composeEnhancers = composeWithDevTools({});
 
+  // # Create Stroe
+  const store = createStore(
+    connectRouter(history)(rootReducer),
+    initialState!,
+    composeEnhancers(applyMiddleware(...middlewares)),
+  );
+
   // #5 Hot Module Reloading
   const hotReloadingEpic = (
     $action: ActionsObservable<Action<P, M>>,
@@ -60,11 +67,5 @@ export default function configureStore(initialState?: InitState): Store<Applicat
     });
   }
 
-  // # Create Stroe
-  const store = createStore(
-    connectRouter(history)(rootReducer),
-    initialState!,
-    composeEnhancers(applyMiddleware(...middlewares)),
-  );
   return store;
 }
