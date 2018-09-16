@@ -6,11 +6,15 @@
   "cacheDirectory": "<rootDir>/.cache",
   "collectCoverageFrom": [
     "<rootDir>/src/**/*.(ts|tsx)",
-    "!<rootDir>/src/**/*.d.(ts|tsx)"
+    "!<rootDir>/src/**/*.d.(ts|tsx)",
+    "!<rootDir>/src/**/index.(ts|tsx)",
+    "!<rootDir>/src/App/constants/**/*.(ts|tsx)",
+    "!<rootDir>/src/App/configs/**/*.(ts|tsx)",
+    "!<rootDir>/src/App/assets/**/*.(ts|tsx)"
   ],
   "globals": {
     "ts-jest": {
-      "tsConfigFile": "<rootDir>/tsconfig.dev.json",
+      "tsConfigFile": "<rootDir>/tsconfig.json",
       "useBabelrc": true
     }
   },
@@ -31,7 +35,16 @@
   ],
   "moduleNameMapper": {
     "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/fileMock.ts",
-    "\\.(css|scss)$": "<rootDir>/config/jest/cssMock.ts"
+    "\\.(css|scss)$": "<rootDir>/config/jest/cssMock.ts",
+    "@/(.*)": "<rootDir>/src/$1",
+    "@Assets/(.*)": "<rootDir>/src/App/assets/$1",
+    "@Assets": "<rootDir>/src/App/assets/index.ts",
+    "@Configs/(.*)": "<rootDir>/src/App/configs/$1",
+    "@Configs": "<rootDir>/src/App/configs/index.ts",
+    "@Constants/(.*)": "<rootDir>/src/App/constants/$1",
+    "@Constants": "<rootDir>/src/App/constants/index.ts",
+    "@Utils/(.*)": "<rootDir>/src/App/utils/$1",
+    "@Utils": "<rootDir>/src/App/utils/index.ts"
   }
 }
 

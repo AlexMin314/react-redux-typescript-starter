@@ -33,7 +33,7 @@ const sizes: Size = {
 // Helpers
 
 // Iterate through the sizes and create a media template
-export const _getMedia = (sizeObj: Size): Media<Size> => Object.keys(sizeObj).reduce((acc: object, label: string) => {
+export const _getMedia = (sizeObj: Size): Media<Size> => Object.keys(sizeObj).reduce((acc: Media<Size>, label: keyof Size) => {
   acc[label] = (first: TemplateStringsArray, ...rest: string[]) => {
     return css`
       @media (max-width: ${sizes[label] / 16}em) {

@@ -3,7 +3,7 @@ type Color = {
   commonRed: string;
 };
 
-interface ThemeInterface {
+export interface ThemeInterface {
   color: Color;
 }
 
@@ -13,8 +13,8 @@ const color: Color = {
 };
 
 // Theme obj
-export const theme = {
+const theme = {
   color,
 };
 
-export default ThemeInterface;
+export default theme;

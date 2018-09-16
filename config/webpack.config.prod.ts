@@ -2,6 +2,7 @@ import webpack = require('webpack');
 import paths = require('./paths');
 
 import common = require('./webpack.config.common');
+const ENV = require('./config.json');
 
 import CleanWebpackPlugin = require('clean-webpack-plugin');
 import HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -11,6 +12,7 @@ import UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 import OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 import AssetsPlugin = require('assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 
 export = (env) => {
   const envs = env.split(':');
@@ -66,6 +68,9 @@ export = (env) => {
           removeRedundantAttributes: true,
           preserveLineBreaks: true,
         },
+      }),
+      new BaseHrefWebpackPlugin({
+        baseHref: ENV.BASE_PROD,
       }),
       new webpack.HashedModuleIdsPlugin(),
       new AssetsPlugin({ path: paths.cache }),

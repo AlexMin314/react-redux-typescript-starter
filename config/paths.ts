@@ -1,6 +1,6 @@
 import path = require('path');
 
-const _pathFn = (...paths) => path.join(process.cwd(), ...paths);
+const _pathFn = (...paths: string[]): string => path.join(process.cwd(), ...paths);
 
 const paths = {
   root: _pathFn(),

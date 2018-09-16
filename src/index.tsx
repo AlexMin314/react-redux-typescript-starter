@@ -1,17 +1,19 @@
+/// <reference path='./index.d.ts'/>
 import React from 'react';
 import ReactDOM from 'react-dom';
+// CONTAINERS
+import Root from '@/Root';
+// CONFIGS
+import theme from './App/styles/theme';
+// TYPES
+import { RootProps } from '@/Root';
 
-import { AppContainer as HotContainer } from 'react-hot-loader';
-
-import Root from './Root';
-
-const render = Component => ReactDOM.render(
+const render = (Component: React.ComponentType<RootProps>) => ReactDOM.render(
   (
-    <HotContainer>
-      <Component
-        store={true}
-      />
-    </HotContainer>
+    <Component
+      store={{}}
+      theme={theme}
+    />
   ),
   document.getElementById('root'),
 );

@@ -1,11 +1,13 @@
+import paths = require('./paths');
 const chalk = require('chalk');
+const ENV = require('./config.json');
 
-export = (port, path, envs) => ({
-  port,
+export = (envs: string[]) => ({
+  port: ENV.FRONT_PORT,
   hot: true,
   host: '0.0.0.0',
   disableHostCheck: true,
-  contentBase: path,
+  contentBase: paths.src,
   historyApiFallback: true,
   compress: true,
   stats: 'none',

@@ -11,9 +11,10 @@ const ENV = require('./config.json');
 import HtmlWebpackPlugin = require('html-webpack-plugin');
 import FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 import HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 
-export = (env) => {
-  const port = ENV.FRONT_PORT || (env && env.PORT) || 3000;
+export = (env: string) => {
+  const port = ENV.FRONT_PORT || 3000;
   const ip = IP.address();
   const envs = env.split(':');
   const commons = common(env);
@@ -26,10 +27,9 @@ export = (env) => {
     },
     output: {
       path: paths.dist,
-      filename: '[name].[hash].js',
-      chunkFilename: '[name].[chunkhash].bundle.js',
+      filename: '[name].js',
+      chunkFilename: '[name].bundle.js',
       publicPath: '/',
-      pathinfo: false,
     },
     module: {
       rules: [
@@ -42,7 +42,12 @@ export = (env) => {
         cacheDirectory: `${paths.cache}/hard-source/[confighash]`,
         environmentHash: {
           root: paths.root,
+          directories: [],
           files: ['package-lock.json', '.babelrc', 'tslint.json', 'tsconfig.json'],
+        },
+        info: {
+          mode: 'none',
+          level: 'debug',
         },
         configHash (webpackConfig) {
           const hash = require('node-object-hash')({ sort: false }).hash(webpackConfig);
@@ -57,6 +62,9 @@ export = (env) => {
         template: './src/index.html',
         filename: paths.html,
       }),
+      new BaseHrefWebpackPlugin({
+        baseHref: ENV.BASE_DEV,
+      }),
       new FriendlyErrorsWebpackPlugin({
         compilationSuccessInfo: {
           messages: [
@@ -65,6 +73,7 @@ export = (env) => {
     [ENV]: ${envs[0]}, [SERVER ENV]: ${envs[1]}${envs[2] ? `:${envs[2]}` : ''}\n`,
             'Please check README for more npm scripts',
           ],
+          notes: [],
         },
       }),
       new webpack.HotModuleReplacementPlugin(),
@@ -80,6 +89,6 @@ export = (env) => {
       removeEmptyChunks: false,
       splitChunks: false,
     },
-    devServer: devServer(port, paths.src, envs),
+    devServer: devServer(envs),
   };
 };

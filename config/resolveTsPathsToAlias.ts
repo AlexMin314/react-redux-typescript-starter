@@ -3,10 +3,8 @@ const { paths } = require('../tsconfig.json').compilerOptions;
 
 const resolveTsPathsToAlias = () => Object.keys(paths)
   .reduce((a, pathKey) => {
-    if (pathKey.includes('*')) {
-      a[pathKey.replace('/*', '')] = path.resolve(process.cwd(), paths[pathKey][0].replace('/*', ''));
-    }
+    a[pathKey.replace('/*', '')] = path.resolve(process.cwd(), paths[pathKey][0].replace('/*', ''));
     return a;
-  }, {});
+  }, {} as typeof paths);
 
 export = resolveTsPathsToAlias;

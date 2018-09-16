@@ -6,7 +6,7 @@ const ENV = require('./config.json');
 import ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 
-export = (env) => {
+export = (env: string) => {
   const isDev = env[0] === 'development';
   const cpus = require('os').cpus().length;
   const maxThread = cpus > 4
@@ -85,6 +85,8 @@ export = (env) => {
         SERVER_PORT: ENV.SERVER_PORT,
         LOG_P: ENV.LOGGER_PW,
         BUILD_DATE: new Date(),
+        BASE_DEV: ENV.BASE_DEV,
+        BASE_PROD: ENV.BASE_PROD,
       }),
     ],
     resolve: {

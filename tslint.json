@@ -13,6 +13,7 @@
     "variable-name": false,
     "no-duplicate-imports": false,
     "align": false,
-    "jsx-no-multiline-js": false
+    "jsx-no-multiline-js": false,
+    "jsx-no-lambda": false
   }
 }

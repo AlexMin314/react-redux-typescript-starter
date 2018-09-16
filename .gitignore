@@ -1,11 +1,6 @@
-## Angular ##
 /dist
-/tmp
-/.tmp
 /.cache
 /bin
-**/.project
-/output
 
 # dependencies
 /node_modules
@@ -14,13 +9,10 @@
 /.idea
 
 # misc
-/.sass-cache
 /connect.lock
 /coverage/*
-/libpeerconnection.log
 npm-debug.log
 testem.log
-/typings
 
 #System Files
 .DS_Store
@@ -31,13 +23,9 @@ testem.log
 .vscode/
 
 ### Intellij ###
-
-# User-specific stuff:
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/dictionaries
-
-# Sensitive or high-churn files:
 .idea/**/dataSources/
 .idea/**/dataSources.ids
 .idea/**/dataSources.xml
@@ -45,31 +33,9 @@ testem.log
 .idea/**/sqlDataSources.xml
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
-
-# Gradle:
 .idea/**/gradle.xml
 .idea/**/libraries
-
-## File-based project format:
-*.iws
-
-## Plugin-specific files:
-
-# IntelliJ
-/out/
-
-# mpeltonen/sbt-idea plugin
 .idea_modules/
-
-### Intellij Patch ###
-# Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
-
-# *.iml
-# modules.xml
-# .idea/misc.xml
-# *.ipr
-
-# Sonarlint plugin
 .idea/sonarlint
 
 ### Node ###
@@ -86,27 +52,8 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 
-# nyc test coverage
-.nyc_output
-
-# node-waf configuration
-.lock-wscript
-
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
-
-# Dependency directories
-node_modules/
-jspm_packages/
-
-# Typescript v1 declaration files
-typings/
-
 # Optional npm cache directory
 .npm
-
-# Optional REPL history
-.node_repl_history
 
 # Output of 'npm pack'
 *.tgz
@@ -116,6 +63,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
-##
-/src/.scannerwork

@@ -1,5 +1,7 @@
 {
   "FRONT_PORT": 3000,
   "SERVER_PORT": 8080,
-  "LOGGER_PW": "logOn"
+  "LOGGER_PW": "logOn",
+  "BASE_DEV": "/",
+  "BASE_PROD": "/d2c/"
 }

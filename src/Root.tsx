@@ -1,11 +1,32 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import { hot } from 'react-hot-loader';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from './App/styles/styled';
+// CONTAINERS
+import App from '@/App';
+// CONFIGS
+import { BASE_URL } from '@/App/configs';
+// TYPES
+import { ThemeInterface } from './App/styles/theme';
+export interface RootProps {
+  store?: object;
+  theme: ThemeInterface;
+}
 
-class Root extends Component {
+class Root extends PureComponent<RootProps> {
   render() {
+    const { store, theme } = this.props;
     return (
-      <div>hello</div>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter basename={BASE_URL}>
+            <Route path="/" component={App}/>
+          </BrowserRouter>
+        </ThemeProvider>
+      </Provider>
     );
   }
 }
 
-export default Root;
+export default hot(module)(Root);
