@@ -6,14 +6,14 @@ import { createEpicMiddleware } from 'redux-observable';
 import { BehaviorSubject } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 // INTERNALS
-import rootReducer from './_rootReducer';
-import rootEpic from './_rootEpic';
-import { logMiddleware } from './middleware/logger';
+import rootReducer from '@/App/store/_rootReducer';
+import rootEpic from '@/App/store/_rootEpic';
+import { logMiddleware } from '@/App/store/middleware/logger';
 // TYPES
 import { Store } from 'redux';
 import { Action } from 'redux-act';
 import { ActionsObservable, StateObservable } from 'redux-observable';
-import { ApplicationState } from './_rootReducer';
+import { ApplicationState } from '@/App/store/_rootReducer';
 
 export type InitState = {};
 export type EpicDependancies = {};

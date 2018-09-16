@@ -4,14 +4,15 @@ import ReactDOM from 'react-dom';
 // CONTAINERS
 import Root from '@/Root';
 // CONFIGS
-import theme from './App/styles/theme';
+import store from '@/App/store';
+import theme from '@/App/styles/theme';
 // TYPES
 import { RootProps } from '@/Root';
 
 const render = (Component: React.ComponentType<RootProps>) => ReactDOM.render(
   (
     <Component
-      store={{}}
+      store={store}
       theme={theme}
     />
   ),

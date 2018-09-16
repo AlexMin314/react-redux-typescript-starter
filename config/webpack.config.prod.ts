@@ -14,9 +14,9 @@ import AssetsPlugin = require('assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 
-export = (env) => {
+export = (env: string) => {
   const envs = env.split(':');
-  const commons = common(env);
+  const commons = common(envs);
   const isAnalysis = envs[1] === 'analysis';
   return {
     mode: envs[0],

@@ -1,12 +1,12 @@
-import logger, { enableLogs, initLogLevel } from './logger';
-import { logFormattedState } from './formatter';
-import { getFilterList } from './filter';
+import logger, { enableLogs, initLogLevel } from '@/App/store/middleware/logger/logger';
+import { logFormattedState } from '@/App/store/middleware/logger/formatter';
+import { getFilterList } from '@/App/store/middleware/logger/filter';
 // import { registerOnError } from './errorHandlers';
 
 // Types
 import { Middleware, Dispatch, Store } from 'redux';
 import { Action } from 'redux-act';
-import { LogLevel, Option, P, M } from './types';
+import { LogLevel, Option, P, M } from '@/App/store/middleware/logger/types';
 
 // Redux middleware : option => store => next => action;
 const logMiddleware = (option: Option<LogLevel>): Middleware => ((store: Store) => {

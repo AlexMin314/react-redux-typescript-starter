@@ -1,6 +1,6 @@
-import { registerOnError } from '../errorHandlers';
+import { registerOnError } from '@/App/store/middleware/logger/errorHandlers';
 
-import { mockedLogger as logger } from './logger.test';
+import { mockedLogger as logger } from '@/App/store/middleware/logger/__test__/logger.test';
 
 describe('Logger Middleware - errorHandler', () => {
 

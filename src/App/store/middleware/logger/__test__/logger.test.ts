@@ -1,5 +1,5 @@
-import { enableLogs, initLogLevel, _logger } from '../logger';
-import { Logger, LogLevel } from '../types';
+import { enableLogs, initLogLevel, _logger } from '@/App/store/middleware/logger/logger';
+import { Logger, LogLevel } from '@/App/store/middleware/logger/types';
 
 export const mockedLogger = {
   log: jest.fn(),

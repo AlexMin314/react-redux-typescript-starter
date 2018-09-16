@@ -1,5 +1,5 @@
-import logMiddleware from '../logMiddleware';
-import { LogLevel } from '../types';
+import logMiddleware from '@/App/store/middleware/logger/logMiddleware';
+import { LogLevel } from '@/App/store/middleware/logger/types';
 
 describe('Logger Middleware - logMiddleware', () => {
 

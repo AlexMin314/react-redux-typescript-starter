@@ -1,4 +1,4 @@
-import { injectGlobal } from './styled';
+import { injectGlobal } from '@/App/styles/styled';
 
 export const globalStyle = () => injectGlobal`
   body {

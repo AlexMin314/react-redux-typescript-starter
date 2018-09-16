@@ -1,4 +1,4 @@
-import { default as myLogger } from './logger';
+import { default as myLogger } from '@/App/store/middleware/logger/logger';
 // Types
 import {
   Mapper,
@@ -9,7 +9,7 @@ import {
   LogOnRequest,
   LogOnResponse,
   LogResponses,
-} from './types';
+} from '@/App/store/middleware/logger/types';
 
 enum STYLE {
   ERROR = '#FF0000',

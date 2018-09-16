@@ -5,10 +5,9 @@ import Entry from '@/Entry';
 import Estimation from '@/Estimation';
 import Help from '@/Help';
 // TYPES
-export interface RouteProps {}
-export interface RouteState {}
+import { RouteProps } from 'react-router';
 
-class Routes extends Component<RouteProps, RouteState> {
+class Routes extends Component<RouteProps> {
   render() {
     return (
       <Switch>

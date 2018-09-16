@@ -1,5 +1,4 @@
-import App from './App';
-import withGateway from './hoc/withGateway';
+import App from '@/App/App';
+import appGateway from './hoc/appGateway';
 
-export default withGateway(App);
-// export default App;
+export default appGateway(App);

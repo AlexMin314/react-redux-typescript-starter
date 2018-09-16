@@ -1,9 +1,9 @@
 import * as React from 'react';
-import styled from '../styled';
+import styled from '@/App/styles/styled';
 import renderer from 'react-test-renderer';
 import 'jest-styled-components';
 
-import { _getMedia, media } from '../styleUtils';
+import { _getMedia, media } from '@/App/styles/styleUtils';
 
 describe('Media Util', () => {
   test('getMedia helper must return an object type', () => {

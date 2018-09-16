@@ -1,6 +1,6 @@
-import * as P from '@Constants/products';
-import { throwError, isTruthyString, isMemberOf, isMatched } from './commons';
-import { predicateAndSeq, predicateOrSeq } from './functional';
+import * as P from '@/App/constants/products';
+import { throwError, isTruthyString, isMemberOf, isMatched } from '@/App/utils/commons';
+import { predicateAndSeq, predicateOrSeq } from '@/App/utils/functional';
 
 const isMatchedProd = isMatched(P.PRODUCT);
 

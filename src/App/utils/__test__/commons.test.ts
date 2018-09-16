@@ -1,5 +1,5 @@
-import * as C from './../commons';
-import { PRODUCT, CHANNEL } from '@Constants';
+import * as C from '@/App/utils/commons';
+import { PRODUCT, CHANNEL } from '@/App/constants';
 
 describe('_Core utils - commons.ts', () => {
   test('isMatched should return boolean properly', () => {

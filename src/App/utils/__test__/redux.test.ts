@@ -1,5 +1,5 @@
 import { createAction, createReducer } from 'redux-act';
-import { actionTypePrefixer, registerReducers } from '../redux';
+import { actionTypePrefixer, registerReducers } from '@/App/utils/redux';
 
 describe('_Core utils - redux.ts', () => {
   test('actionTypePrefixer should return proper srting', () => {

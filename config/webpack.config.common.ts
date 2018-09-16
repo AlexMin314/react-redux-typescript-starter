@@ -1,4 +1,5 @@
 import webpack = require('webpack');
+import path = require('path');
 import paths = require('./paths');
 import resolveTsPathsToAlias = require('./resolveTsPathsToAlias');
 const ENV = require('./config.json');
@@ -6,7 +7,7 @@ const ENV = require('./config.json');
 import ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const SimpleProgressPlugin = require('webpack-simple-progress-plugin');
 
-export = (env: string) => {
+export = (env: string[]) => {
   const isDev = env[0] === 'development';
   const cpus = require('os').cpus().length;
   const maxThread = cpus > 4
@@ -93,6 +94,7 @@ export = (env: string) => {
       extensions: ['.ts', '.tsx', '.js'],
       symlinks: false,
       alias: {
+        warning: path.resolve(paths.nodes_modules, 'warning'),
         ...resolveTsPathsToAlias(),
       },
     },

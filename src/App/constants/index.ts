@@ -1,3 +1,3 @@
-export * from './channels';
-export * from './products';
-export * from './envs';
+export * from '@/App/constants/channels';
+export * from '@/App/constants/products';
+export * from '@/App/constants/envs';

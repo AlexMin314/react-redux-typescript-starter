@@ -1,6 +1,6 @@
 // Types
 import { Action } from 'redux-act';
-import { LogLevel, Option, P, M, FilterFn } from './types';
+import { LogLevel, Option, P, M, FilterFn } from '@/App/store/middleware/logger/types';
 
 export const getFilterList = (option: Option<LogLevel>) => {
   const checkerFn = (op: Option<LogLevel>) => (key: keyof Option<LogLevel>) => op[key] && (op[key] as string).length > 0;

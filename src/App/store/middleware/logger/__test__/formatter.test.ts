@@ -4,14 +4,14 @@ import {
   _logOnRequest,
   _logOnResponse,
   _logOnResponseError,
-} from '../formatter';
-import { mockedLogger as logger } from './logger.test';
+} from '@/App/store/middleware/logger/formatter';
+import { mockedLogger as logger } from '@/App/store/middleware/logger/__test__/logger.test';
 // TYPES
 import {
   LogLevel,
   LogOnRequest,
   LogOnResponse,
-} from '../types';
+} from '@/App/store/middleware/logger/types';
 
 describe('Logger Middleware - formatter', () => {
 

@@ -1,12 +1,14 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Helmet } from 'react-helmet';
-import Routes from './Routes';
+import Routes from '@/App/_Routes';
 // ASSETS
-import { favicon } from '@Assets';
+import { favicon } from '@/App/assets';
 // UTILS
-import { isProdEnv } from '@Utils/envs';
+import { isProdEnv } from '@/App/utils/envs';
 // TYPES
-export interface AppProps {}
+import { RouteProps } from 'react-router';
+
+export interface AppProps extends RouteProps {}
 
 class App extends PureComponent<AppProps> {
   render() {

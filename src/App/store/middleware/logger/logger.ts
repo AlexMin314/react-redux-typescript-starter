@@ -8,7 +8,7 @@ import {
   InitLogLevel,
   IsAllowedLevel,
   ApplyLogLevelFilter,
-} from './types';
+} from '@/App/store/middleware/logger/types';
 
 declare global {
   interface Window {

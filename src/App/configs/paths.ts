@@ -1,5 +1,5 @@
-import { SERVER_ENVS } from '@Constants/envs';
-import { isProdEnv } from '@Utils/envs';
+import { SERVER_ENVS } from '@/App/constants/envs';
+import { isProdEnv } from '@/App/utils/envs';
 
 export const _getApiBasePath = (serverEnv: string): string => {
   const API_BASE_PATHS = {

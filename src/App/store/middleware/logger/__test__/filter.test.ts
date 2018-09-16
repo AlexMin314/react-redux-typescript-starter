@@ -1,4 +1,4 @@
-import { getFilterList } from '../filter';
+import { getFilterList } from '@/App/store/middleware/logger/filter';
 
 describe('Logger Middleware - filter', () => {
 

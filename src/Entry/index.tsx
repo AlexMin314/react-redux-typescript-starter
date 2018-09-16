@@ -1,3 +1,3 @@
-import Entry from './Entry';
+import Entry from '@/Entry/Entry';
 
 export default Entry;

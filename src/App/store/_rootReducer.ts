@@ -1,9 +1,11 @@
 import { combineReducers, Reducer } from 'redux';
 import { createReducer, Reducer as ActReducer } from 'redux-act';
 import { mergeAll } from 'ramda';
+import { fromJS } from 'immutable';
 // UTILS
-import { registerReducers } from '@Utils/redux';
+import { registerReducers } from '@/App/utils/redux';
 // MODELS
+import { envs, EnvsState } from '@/App/models/envs';
 
 // TYPES
 export interface Models<S> {
@@ -14,10 +16,11 @@ export interface Models<S> {
 }
 
 /* update below when there is new module and models */
-type AppMergedState = any;
+type AppMergedState = EnvsState;
 
-const models: Models<ApplicationState>[] = [
+const models: Models<AppMergedState>[] = [
   /* add more models to be merged as one reducer */
+  envs,
 ];
 
 export interface ApplicationState {
@@ -25,9 +28,9 @@ export interface ApplicationState {
 }
 
 // Merging actions, reducers, initState of the models of any modules into each object.
-const merged: Models<ApplicationState> = mergeAll([{ actions:{}, reducers:{}, initState:{} }, ...models]);
+export const merged: Models<ApplicationState> = mergeAll([{ actions:{}, reducers:{}, initState:{} }, ...models]);
 // init app reducer.
-const appReducer: ActReducer<AppMergedState> = createReducer<AppMergedState>({}, merged.initState);
+const appReducer: ActReducer<AppMergedState> = createReducer<AppMergedState>({}, fromJS(merged.initState));
 // register reducer logics to the app reducer.
 registerReducers(appReducer, merged);
 

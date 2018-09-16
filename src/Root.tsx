@@ -2,15 +2,17 @@ import React, { PureComponent } from 'react';
 import { hot } from 'react-hot-loader';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { ThemeProvider } from './App/styles/styled';
+import { ThemeProvider } from '@/App/styles/styled';
 // CONTAINERS
 import App from '@/App';
 // CONFIGS
 import { BASE_URL } from '@/App/configs';
 // TYPES
-import { ThemeInterface } from './App/styles/theme';
+import { ThemeInterface } from '@/App/styles/theme';
+import { Store } from 'redux';
+
 export interface RootProps {
-  store?: object;
+  store: Store;
   theme: ThemeInterface;
 }
 

@@ -1,5 +1,5 @@
-import * as C from '../channels';
-import { CHANNEL } from '@Constants';
+import * as C from '@/App/utils/channels';
+import { CHANNEL } from '@/App/constants';
 
 describe('_Core utils channle.ts', () => {
   test('matchChannel should work as expected', () => {

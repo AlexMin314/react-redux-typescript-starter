@@ -1,3 +1,3 @@
-import Estimation from './Estimation';
+import Estimation from '@/Estimation/Estimation';
 
 export default Estimation;

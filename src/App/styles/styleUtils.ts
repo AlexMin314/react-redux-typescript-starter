@@ -1,4 +1,4 @@
-import { css } from './styled';
+import { css } from '@/App/styles/styled';
 import { ThemedCssFunction } from 'styled-components';
 
 type Size = {

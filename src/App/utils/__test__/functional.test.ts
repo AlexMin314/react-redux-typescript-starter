@@ -1,4 +1,4 @@
-import * as F from '../functional';
+import * as F from '@/App/utils/functional';
 
 describe('_Core utils - functional.ts', () => {
   test('identity should return identical value', () => {

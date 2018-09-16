@@ -1,6 +1,6 @@
-import * as C from '@Constants/channels';
-import { throwError, isTruthyString, isMemberOf, isMatched } from './commons';
-import { predicateAndSeq } from './functional';
+import * as C from '@/App/constants/channels';
+import { throwError, isTruthyString, isMemberOf, isMatched } from '@/App/utils/commons';
+import { predicateAndSeq } from '@/App/utils/functional';
 
 const isMatchedCH = isMatched(C.CHANNEL);
 

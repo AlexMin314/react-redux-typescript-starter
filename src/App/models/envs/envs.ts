@@ -1,54 +1,58 @@
 import { createAction } from 'redux-act';
-import { fromJS } from 'immutable';
+import cuid from 'cuid';
+import { Map } from 'immutable';
 // UTILS
-import {
-  actionTypePrefixer,
-  andSeq,
-  matchChannel,
-  matchProduct,
-} from '@Utils';
-// CONSTS
-import { CHANNEL, PRODUCT } from '@Constants';
+import { actionTypePrefixer } from '@/App/utils';
 // ACTION TYPE HELPER
-const actionType = actionTypePrefixer('App', 'envs');
+const modelPath = 'envs';
+const actionType = actionTypePrefixer('App', modelPath);
 // TYPES
-export interface EnvsState {
-  showConsent: boolean;
+export interface EnvsState extends Map<string, any> {
+  NODE_ENV?: string;
+  SERVER_ENV?: string;
+  sessionId?: string;
+  entryUrl?: string;
 }
 export interface EnvsPayload {
   data: {
-    prod: string,
-    ch: string,
+    entryUrl?: string,
   };
 }
+type Mutators = Mutator<EnvsPayload, EnvsState>;
+
 // INIT STATES
-const envsState: EnvsState = fromJS({
-  showConsent: false,
+const envsState: EnvsState = Map({
+  [modelPath]: Map({
+    NODE_ENV: '',
+    SERVER_ENV: '',
+    sessionId: '',
+    entryUrl: '',
+  }),
 });
 
 // ACTIONS
-const a = {
-  setShowConsent: createAction<string, string, {}>(actionType('set_show_Consent'), (prod: string, ch: string) => ({ data: { prod, ch } })),
+export const actions = {
+  setEnvs: createAction<string, string, {}>(actionType('set_show_Consent'), (entryUrl: string) => ({ data: { entryUrl } })),
 };
 
 // MUTATORS (Logics of Reducer)
-export const processShowConsent: Mutator<EnvsPayload, EnvsState> =
-  ({ data }) => (state) => {
-    const showConsent = andSeq(
-      matchProduct(PRODUCT.PTV.TYPE)(data.prod),
-      matchChannel(CHANNEL.DIA)(data.ch),
-    );
-    return ({ ...state, showConsent });
-  };
+export const processEnvs: Mutators = ({ data }) => (state) => {
+  const { entryUrl } = data;
+  return (state)
+    .set('NODE_ENV', process.env.NODE_ENV)
+    .set('SERVER_ENV', process.env.SERVER_ENV)
+    .set('sessionId', cuid())
+    .set('entryUrl', entryUrl);
+};
 
 // REDUCERS
-const r = {
-  setShowConsent: (state: EnvsState, payload: EnvsPayload) => processShowConsent(payload)(state),
+const reducers = {
+  setEnvs: (state: EnvsState, payload: EnvsPayload) => processEnvs(payload)(state),
 };
 
 // EXPORT DUCKS
 export default {
-  reducers: r,
-  actions: a,
+  reducers,
+  actions,
   initState: envsState,
 };

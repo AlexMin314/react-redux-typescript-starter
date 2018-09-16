@@ -17,7 +17,7 @@ export = (env: string) => {
   const port = ENV.FRONT_PORT || 3000;
   const ip = IP.address();
   const envs = env.split(':');
-  const commons = common(env);
+  const commons = common(envs);
   return {
     mode: envs[0],
     devtool: 'cheap-module-eval-source-map',

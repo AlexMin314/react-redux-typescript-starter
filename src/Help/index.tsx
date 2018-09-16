@@ -1,3 +1,3 @@
-import Help from './Help';
+import Help from '@/Help/Help';
 
 export default Help;

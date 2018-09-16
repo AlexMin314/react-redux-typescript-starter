@@ -1,5 +1,5 @@
-import * as P from '../products';
-import { PRODUCT } from '@Constants';
+import * as P from '@/App/utils/products';
+import { PRODUCT } from '@/App/constants';
 
 describe('_Core utils - products.ts', () => {
   test('matchProduct should work as expected', () => {

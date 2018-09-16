@@ -1,9 +1,9 @@
-export { default } from './logger';
-export { default as logMiddleware } from './logMiddleware';
-export * from './errorHandlers';
+export { default } from '@/App/store/middleware/logger/logger';
+export { default as logMiddleware } from '@/App/store/middleware/logger/logMiddleware';
+export * from '@/App/store/middleware/logger/errorHandlers';
 export {
   logFormattedError,
   logOnRequest,
   logOnResponse,
   logOnResponseError,
-} from './formatter';
+} from '@/App/store/middleware/logger/formatter';
