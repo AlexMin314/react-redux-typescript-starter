@@ -32,7 +32,7 @@ const envsState: EnvsState = Map({
 
 // ACTIONS
 export const actions = {
-  setEnvs: createAction<string, string, {}>(actionType('set_show_Consent'), (entryUrl: string) => ({ data: { entryUrl } })),
+  setEnvs: createAction<string, {}>(actionType('set_show_Consent'), (entryUrl: string) => ({ data: { entryUrl } })),
 };
 
 // MUTATORS (Logics of Reducer)

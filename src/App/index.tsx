@@ -1,4 +1,4 @@
 import App from '@/App/App';
-import appGateway from './hoc/appGateway';
+import appGateway from '@/App/_GateWay';
 
 export default appGateway(App);

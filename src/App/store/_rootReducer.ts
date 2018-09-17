@@ -6,7 +6,6 @@ import { Map } from 'immutable';
 import { registerReducers } from '@/App/utils/redux';
 // MODELS
 import envs, { EnvsState } from '@/App/models/envs';
-
 // TYPES
 export interface Models<S> {
   reducer?: object;

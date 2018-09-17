@@ -3,15 +3,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // ACTIONS
 import envs from '@/App/models/envs';
-// UTILS
-import { nothing } from '@Utils/functional';
 // TYPES
 import { Dispatch } from 'redux';
 import { AppProps } from '@/App/App';
 import { RouteProps } from 'react-router';
 
 export type Connect = {
-  actions: typeof envs.actions,
+  action: typeof envs.actions,
 };
 
 export type HOCprops = RouteProps
@@ -19,11 +17,13 @@ export type HOCprops = RouteProps
 
 export interface ConnectedProps extends HOCprops, Connect {}
 
-const withGateway = (ChildComponent: React.ComponentType<HOCprops>) => {
+const appGateWay = (ChildComponent: React.ComponentType<HOCprops>) => {
 
-  class WithGateway extends PureComponent<ConnectedProps> {
+  class AppGateWay extends PureComponent<ConnectedProps> {
     constructor(props: ConnectedProps) {
       super(props);
+      this.props.action.setEnvs(this.props.location.pathname);
+      // Gateway logic can be here...
     }
 
     render() {
@@ -35,7 +35,7 @@ const withGateway = (ChildComponent: React.ComponentType<HOCprops>) => {
     action: bindActionCreators({ ...envs.actions }, dispatch),
   });
 
-  return connect(nothing, d)(WithGateway);
+  return connect(() => ({}), d)(AppGateWay);
 };
 
-export default withGateway;
+export default appGateWay;
