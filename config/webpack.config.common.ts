@@ -12,7 +12,7 @@ export = (env: string[]) => {
   const cpus = require('os').cpus().length;
   const maxThread = cpus > 4
     ? cpus - 3
-    : cpus > 3
+    : cpus === 4
       ? cpus - 2
       : 1;
   const extraThread = cpus > 4 ? 2 : 1;

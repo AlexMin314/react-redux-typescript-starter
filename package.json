@@ -23,7 +23,9 @@
     "clean:build": "rimraf dist",
     "clean:test": "npm-run-all -p clean:test:*",
     "clean:test:unit": "rimraf coverage",
-    "postinstall": "npm run clean"
+    "postinstall": "npm run clean",
+    "storybook": "start-storybook --quiet -p 3001 -c ./src/Common/config/.storybook",
+    "storybook:build": "build-storybook -c ./src/Common/config/.storybook -s"
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
@@ -57,6 +59,12 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
+    "@storybook/addon-actions": "^3.4.10",
+    "@storybook/addon-info": "^3.4.10",
+    "@storybook/addon-knobs": "^3.4.10",
+    "@storybook/addon-links": "^3.4.10",
+    "@storybook/addon-notes": "^3.4.10",
+    "@storybook/react": "^4.0.0-alpha.21",
     "@types/assets-webpack-plugin": "^3.5.1",
     "@types/clean-webpack-plugin": "^0.1.2",
     "@types/compression-webpack-plugin": "^0.4.2",
@@ -99,6 +107,7 @@
     "npm-run-all": "^4.1.3",
     "opener": "^1.5.1",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "react-docgen-typescript-webpack-plugin": "^1.1.0",
     "react-hot-loader": "^4.3.7",
     "react-test-renderer": "^16.5.1",
     "react-testing-library": "^5.0.1",
