@@ -1,7 +1,7 @@
-import { css } from './styled';
+import { css } from '@Styles';
 import { ThemedCssFunction } from 'styled-components';
 
-type Size = {
+export type BreakPoints = {
   desktop?: number,
   tablet?: number,
   phone?: number,
@@ -9,6 +9,7 @@ type Size = {
   lg?: number,
   md?: number,
   sm?: number,
+  xs?: number,
 };
 interface Media<T>  {
   desktop?: ThemedCssFunction<T>;
@@ -18,9 +19,10 @@ interface Media<T>  {
   lg?: ThemedCssFunction<T>;
   md?: ThemedCssFunction<T>;
   sm?: ThemedCssFunction<T>;
+  xs?: ThemedCssFunction<T>;
 }
 
-const sizes: Size = {
+export const breakPoints: BreakPoints = {
   desktop: 992,
   tablet: 768,
   phone: 576,
@@ -28,22 +30,25 @@ const sizes: Size = {
   lg: 992,
   md: 768,
   sm: 576,
+  xs: 0,
 };
 
 // Helpers
 
 // Iterate through the sizes and create a media template
-export const _getMedia = (sizeObj: Size): Media<Size> => Object.keys(sizeObj).reduce((acc: object, label: string) => {
-  acc[label] = (first: TemplateStringsArray, ...rest: string[]) => {
-    return css`
-      @media (max-width: ${sizes[label] / 16}em) {
-        ${css(first, ...rest)}
-      }
-    `;
-  };
-  return acc;
-}, {});
+export const _getMedia = (sizeObj: BreakPoints): Media<BreakPoints> =>
+  Object.keys(sizeObj).reduce((acc: Media<BreakPoints>, label: keyof BreakPoints) => {
+    acc[label] = (first: TemplateStringsArray, ...rest: string[]) => {
+      return css`
+        @media (max-width: ${sizeObj[label] / 16}em) {
+          ${css(first, ...rest)}
+        }
+      `;
+    };
+    return acc;
+  },
+{});
 
-export const media: Media<Size> = _getMedia(sizes);
+export const media: Media<BreakPoints> = _getMedia(breakPoints);
 
-// add more mixins
+// add more utils

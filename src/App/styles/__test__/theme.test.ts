@@ -1,4 +1,4 @@
-import { theme } from '../theme';
+import { theme } from '@Styles';
 
 describe('Theme file', () => {
   test('color must be an object type', () => {
